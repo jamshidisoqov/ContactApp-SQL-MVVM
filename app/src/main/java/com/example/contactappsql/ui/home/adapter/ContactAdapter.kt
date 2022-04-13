@@ -4,15 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactappsql.R
+import com.example.contactappsql.data.local.models.Contact
 import com.example.contactappsql.databinding.ContactRcvItemBinding
 
-class ContactAdapter() : RecyclerView.Adapter<ContactAdapter.Vh>() {
+class ContactAdapter : RecyclerView.Adapter<ContactAdapter.Vh>() {
 
     private lateinit var binding: ContactRcvItemBinding
+    private var list:List<Contact> = emptyList()
 
     inner class Vh(var binding: ContactRcvItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind() {
-
+        fun onBind(contact: Contact) {
+            binding.apply {
+                tvUsername.text = contact.name
+                tvNumber.text = contact.number
+            }
         }
     }
 
@@ -24,8 +29,13 @@ class ContactAdapter() : RecyclerView.Adapter<ContactAdapter.Vh>() {
     }
 
     override fun onBindViewHolder(holder: Vh, position: Int) {
-
+        holder.onBind(list[position])
     }
 
-    override fun getItemCount(): Int = 20
+    override fun getItemCount(): Int = list.size
+
+    fun setData(contactList: List<Contact>){
+        list=contactList
+        notifyDataSetChanged()
+    }
 }
