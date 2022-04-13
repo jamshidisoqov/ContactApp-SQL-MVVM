@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.add.AddFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til1"
+        style="@style/TextInputLayoutStyle"
+        android:layout_centerInParent="true"
+        android:hint="@string/name">
+
+        <EditText
+            android:id="@+id/ed_name"
+            style="@style/EditTextStyle"
+            tools:ignore="LabelFor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til2"
+        style="@style/TextInputLayoutStyle"
+        android:layout_below="@id/til1"
+        android:hint="@string/number">
+
+        <com.vicmikhailau.maskededittext.MaskedEditText
+            android:id="@+id/ed_number"
+            style="@style/EditTextStyle"
+            android:inputType="phone"
+            app:mask="(##) ###-##-##" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Add"/>
+
+</RelativeLayout>
